@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OTDA - Myths</title>
+<link rel="shortcut icon" href="tv.ico" />
+<link rel="stylesheet" type="text/css" href="masterstyle.css" />
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+<script>
+	function submitQuiz() {
+		console.log('submitted');
+
+	// get each answer score
+		function answerScore (qName) {
+			var radiosNo = document.getElementsByName(qName);
+
+			for (var i = 0, length = radiosNo.length; i < length; i++) {
+   				if (radiosNo[i].checked) {
+			// do something with radiosNo
+					var answerValue = Number(radiosNo[i].value);
+				}
+			}
+			// change NaNs to zero
+			if (isNaN(answerValue)) {
+				answerValue = 0;
+			}
+			return answerValue;
+		}
+
+	// calc score with answerScore function
+		var calcScore = (answerScore('q1') + answerScore('q2') + answerScore('q3') + answerScore('q4'));
+		console.log("CalcScore: " + calcScore); // it works!
+
+	// function to return correct answer string
+		function correctAnswer (correctStringNo, qNumber) {
+			console.log("qNumber: " + qNumber);  // logs 1,2,3,4 after called below
+			return ("The correct answer for question #" + qNumber + ": &nbsp;<strong>" +
+				(document.getElementById(correctStringNo).innerHTML) + "</strong>");
+			}
+
+	// print correct answers only if wrong (calls correctAnswer function)
+		if (answerScore('q1') === 0) {
+			document.getElementById('correctAnswer1').innerHTML = correctAnswer('correctString1', 1);
+		}
+		if (answerScore('q2') === 0) {
+			document.getElementById('correctAnswer2').innerHTML = correctAnswer('correctString2', 2);
+		}
+		if (answerScore('q3') === 0) {
+			document.getElementById('correctAnswer3').innerHTML = correctAnswer('correctString3', 3);
+		}
+		if (answerScore('q4') === 0) {
+			document.getElementById('correctAnswer4').innerHTML = correctAnswer('correctString4', 4);
+		}
+
+	// calculate "possible score" integer
+		var questionCountArray = document.getElementsByClassName('question');
+
+		var questionCounter = 0;
+		for (var i = 0, length = questionCountArray.length; i < length; i++) {
+			questionCounter++;
+		}
+
+	// show score as "score/possible score"
+		var showScore = "Your Score: " + calcScore +"/" + questionCounter;
+	// if 4/4, "perfect score!"
+		if (calcScore === questionCounter) {
+			showScore = showScore + "&nbsp; <strong>Perfect Score!</strong>"
+		};
+		document.getElementById('userScore').innerHTML = showScore;
+	}
+
+$(document).ready(function() {
+
+	$('#submitButton').click(function() {
+		$(this).addClass('hide');
+	});
+
+});</script>
+</head>
+<div id="header">
+<header class="A-2">	
+<img class="banner" src="OTDABanner.jpg">
+<div class="navigation">
+<a href="Index.htm" class="buttonl">Home</a>
+<a href="BenDonation.htm" class="button">Donation Station</a>
+<a href="quinn.htm" class="button">Gift of Life</a>
+<a href="myths.htm" class="button">Myths</a>
+<a href="Awareness.html" class="buttonr">Awareness</a>
+</div>
+<hr>
+</header>
+</div>
+<body class="A-1" onload="startTime()">
+<br /><br /><br /><br /><br /><br /><br /><br />
+
+<a name="anchor"></a>
+<table class="tablebody" cellspacing="0">
+<colgroup>
+    <col style="width:10%">
+    <col style="width:80%">
+    <col style="width:10%">
+  <tr>
+    <th class="sidebody"></th><!--Don't use these-->
+    <td class="bodybody">
+<table class="imagetoplink">
+<colgroup>
+    <col style="width:80%">
+    <col style="width:20%">
+<tr class="imagetoplinkrow">
+<td class="imagetoplinkcell">
+<h1 class="A-H1">Myths Regarding <abbr title="Organ and Tissue Donation Awareness">OTDA</h1>
+<p class="otdainfotop">Organ donation can be a scary concept to some people, and that is because there is a plethora of myths or things that people don't know/understand about the concept and process.  Just below, there are some myths and Q/A-styled facts that may shed some light on the subject.</p>
+<br />
+<div class="questionquote">Will donating organs change my appearance?</div><div class="questionanswer">Absolutely not.  Doctors will remove the organs surgically and will maintain the utmost dignity and respect for the donor.  There are so little alterations, in fact, that donation does not interfere with open casket funeral arrangements.</div>
+<div class="questionquote">Does my religion support organ donation?</div><div class="questionanswer">All recognized religions support organ and tissue donation, you're good to go!</div><br />
+<div class="questionquote">There are plenty of organ donors already, they don't need me.</div><div class="questionanswer">Absolutely false.  Nationally, there are 123,000+ patients waiting for life-saving organ transplants.  There are over 6,400 waiting in the Gift of Life service area alone.</div><br />
+<div class="questionquote">Only the wealthy and famous recieve organs.</div><div class="questionanswer">False.  Most major insurances cover heart, liver, kidney, and lung transplants.  Donors don't need to pay to donate their organs, either.</div><br />
+<div class="questionquote">I have a history of medical illness, are my organs still donateable?</div><div class="questionanswer">When one dies, Gift of Life staff will look at the person's medical and social histories to determine if they are suitable for donation.  There are a few diseases that can prevent someone from being a donor, cancer and HIV/AIDS are among them.</div><br />
+<div class="questionquote">Isn't organ donation still experimental?</div><div class="questionanswer">No, organ donation has been a successful life-saving procedure for over 50 years.</div><br />
+<div class="questionquote">Am I too old to be an organ donor?</div><div class="questionanswer">Never.  There is no set age limit for an organ donor.  As long as your organs are functioning and suitable for donation, it doesn't matter how old you are.  Therefore, people of any age can feel free to register as an organ donor.</div><br />
+</td>
+<td class="imagetoplinkcell2">
+<div class="container-A">
+<img src="otdasite.jpg" height="500" width="500" class="image-A">
+<div class="middle-A">
+<a href="http://www.iu13.org/educators/instruction/improvement/state-initiatives/otda/" target="_blank" class="buttonlink">OTDA Website</a>
+</div>
+</div>
+<br />
+<br /> 
+<br />
+<div class="container-A">
+<img src="twinvalleyimage.png" height="500" width="500" class="image-A">
+<div class="middle-A">
+<a href="http://www.tvsd.org" target="_blank" class="buttonlink">TVSD Website</a>
+</div>
+</div>
+<h3>  Hint:  Hover your mouse over the two images above, and click the button to head over to their website!</h3>
+</td>
+</tr>
+</table>
+	</td>
+    <th class="sidebody"></th><!--Don't use these-->
+  </tr>
+   <tr>
+    <th class="sidebodyvid"></th><!--Don't use these-->
+    <td class="bodybodyvid">
+	<iframe align="middle" width="820" height="450"
+src="aaronmythvideo.mp4" autostart="false">
+</iframe>
+<div class="videotext">
+<p class="songtext">The song "How to Save a Life", covered <br />by Blaze Johnson, is obviously about knowing how <br />to save a life. Everyone knows at least one way <br />to save a life, and that is through organ donation!<br />  The best part is, almost <b>anyone</b> can be an organ<br /> donor and save a life if they so choose.<br /><br />  If you live in Pennsylvania and want to become an <br />organ donor, click <u><a target="_blank" href="http://www.donatelifepa.org/registration">here</a></u> and sign up!</h2></p>
+</div>
+	</td>
+    <th class="sidebodyvid"></th><!--Don't use these-->
+  </tr>
+</table>
+
+  <h2 class="quizHeader" align="center">Take a quiz and see what you know!</h2>
+  
+	<table class="quiztable" style="width:100%">
+	<tr>
+	  <td>
+	  	<div>
+	  		<p class="question">1. Organ donation interferes <br />with funeral arrangements</p>
+
+	    	<ul>
+ 		<input class="answer" type="radio" name="q1" value="0">
+	        <label>True</label>
+	        <br>
+	    	<input class="answer" type="radio" name="q1" value="1">
+	        <label id="correctString1">False</label>
+
+    		</ul>
+	  	</div>
+	  </td>
+	  <td>
+	  	<div>
+	  		<p class="question">2. Doctors won't work hard to save my life <br />if they know I'm a registered organ donor</p>
+
+	    	<ul>
+	        <input class="answer" type="radio" name="q2" value="0">
+	        <label>True</label>
+	        <br>
+	        <input class="answer" type="radio" name="q2" value="1">
+	        <label id="correctString2">False</label>
+
+	    	</ul>
+	  	</div>
+	  </td>
+	
+	  <td>
+	  	<div>
+	  		<p class="question">3. Organ donors save lives</p>
+
+	    	<ul>
+		<input class="answer" type="radio" name="q3" value="1">
+	        <label id="correctString3">True</label>
+		<br>
+	        <input class="answer" type="radio" name="q3" value="0">
+	        <label>False</label>
+	       
+	        
+	    	</ul>
+		</div>
+	  </td>
+	  <td>
+	  	<div>
+	  		<p class="question">4. Major religions support organ donation</p>
+
+	    	<ul>
+	        <input class="answer" type="radio" name="q4" value="1">
+	        <label id="correctString4">True</label>
+	        <br>
+	        <input class="answer" type="radio" name="q4" value="0">
+	        <label>False</label>
+    		</ul>
+	</div
+	  </td>
+	</tr>
+	</table>
+<br/>
+  <div class="submitter">
+          <button class="quizSubmit" id="submitButton" onClick="submitQuiz()"
+          type="submit" value="Submit">Submit</button>
+    </div>
+  
+<!--show only wrong answers on submit-->
+    <div align="center" class="quizAnswers" id="correctAnswer1"></div>
+    <div align="center" class="quizAnswers" id="correctAnswer2"></div>
+    <div align="center" class="quizAnswers" id="correctAnswer3"></div>
+    <div align="center" class="quizAnswers" id="correctAnswer4"></div>
+
+<!--show score upon submit-->
+    <div>
+    	<h2 align="center" class="quizScore" id="userScore"></h2>
+    </div>
+	</div>
+<center>Current time:<div id="txt"></div></center>
+<br />
+<center><a href="#anchor">Back to top</a></center>
+<br />
+<footer>
+	Twin Valley School District &bull;
+	610-286-8600 &bull;
+	4851 N. Twin Valley Rd., Elverson, PA 19520
+</footer>
+
+</body>
+</html>
+			
